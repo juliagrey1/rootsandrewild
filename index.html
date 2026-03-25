@@ -1204,19 +1204,20 @@ footer {
 </section>
 
 <!-- NEWSLETTER -->
-<section class="newsletter">
+<section class="newsletter-section">
   <div>
-    <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.8;">Come Along</div>
-    <h2 class="nl-title">Letters from<br><strong>inside the machine</strong></h2>
-    <p style="font-family: 'Karla', sans-serif; line-height: 1.6; opacity: 0.9;">Real dispatches as we investigate whether opting out is actually possible — the chemical research, the financial math, and every hard fact that might stop us.</p>
+    <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px;">Come Along</div>
+    <h2>Letters from<br><strong>inside the machine</strong></h2>
+    <p>Real dispatches as we investigate whether opting out is actually possible. We're doing the work in public.</p>
   </div>
-  <div>
-    <form action="https://formspree.io/f/xpqoajqd" method="POST" class="nl-form">
-      <input type="text" name="first_name" placeholder="Your first name" required>
-      <input type="email" name="email" placeholder="Your email address" required>
-      <button type="submit" class="nl-submit">Follow the story &rarr;</button>
+
+  <div class="nl-form-container">
+    <form action="https://formspree.io/f/xpqoajqd" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+      <input type="text" name="name" class="nl-input" placeholder="Your first name" required>
+      <input type="email" name="email" class="nl-input" placeholder="Your email address" required>
+      <button type="submit" class="nl-btn">Follow the story &rarr;</button>
     </form>
-    <p style="font-size: 0.7rem; margin-top: 15px; opacity: 0.6;">No spam. Just letters. Unsubscribe whenever.</p>
+    <span style="font-size: 0.7rem; opacity: 0.6; text-align: center;">No spam. Just letters. Unsubscribe whenever.</span>
   </div>
 </section>
 
