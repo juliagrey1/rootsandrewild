@@ -7,6 +7,64 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Karla:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
 <style>
+  /* Newsletter Section Styling */
+.newsletter {
+  background-color: #4a5d3e; /* Forest Green */
+  color: #ffffff;
+  padding: 80px 10% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.newsletter div {
+  flex: 1;
+  min-width: 300px;
+}
+
+.nl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 15px 0;
+}
+
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nl-form input {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: 'Karla', sans-serif;
+}
+
+.nl-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.nl-submit {
+  padding: 18px;
+  background: #ffffff;
+  color: #4a5d3e;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nl-submit:hover {
+  background: #f0f0f0;
+}
 :root {
   --ink: #1A1510;
   --ink-mid: #3D3328;
@@ -1095,19 +1153,19 @@ footer {
 </section>
 
 <!-- NEWSLETTER -->
-<section class="newsletter" id="newsletter">
+<section class="newsletter">
   <div>
-    <div class="label">Come Along</div>
+    <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.8;">Come Along</div>
     <h2 class="nl-title">Letters from<br><strong>inside the machine</strong></h2>
-    <p class="nl-body">Real dispatches as we investigate whether opting out is actually possible — the chemical research, the financial math, the husband updates, the RA complications, and every hard fact that might stop us. We're not selling a dream. We're doing the work in public.</p>
+    <p style="font-family: 'Karla', sans-serif; line-height: 1.6; opacity: 0.9;">Real dispatches as we investigate whether opting out is actually possible — the chemical research, the financial math, and every hard fact that might stop us.</p>
   </div>
   <div>
-    <form action="https://formspree.io/f/xpqoajqd" method="POST" class="nl-form" id="nlForm">
-      <input type="text" name="first-name" class="nl-name" placeholder="Your first name" required>
-      <input type="email" name="email" class="nl-email" placeholder="Your email address" required>
+    <form action="https://formspree.io/f/xpqoajqd" method="POST" class="nl-form">
+      <input type="text" name="first_name" placeholder="Your first name" required>
+      <input type="email" name="email" placeholder="Your email address" required>
       <button type="submit" class="nl-submit">Follow the story &rarr;</button>
-      <span class="nl-note">No spam. Just letters. Unsubscribe whenever.</span>
     </form>
+    <p style="font-size: 0.7rem; margin-top: 15px; opacity: 0.6;">No spam. Just letters. Unsubscribe whenever.</p>
   </div>
 </section>
 
