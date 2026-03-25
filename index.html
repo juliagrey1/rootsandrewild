@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roots & Rewild — I'm Trying to Convince My Husband</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Karla:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1510;
+  --ink-mid: #3D3328;
+  --ink-soft: #6B5E50;
+  --ink-pale: #9C8E80;
+  --paper: #FAF7F2;
+  --paper-warm: #F2EDE3;
+  --paper-deep: #E8E0D0;
+  --leaf: #3D5C30;
+  --leaf-mid: #5A7A46;
+  --leaf-pale: #8FAA7A;
+  --leaf-wash: #D4E0C8;
+  --ember: #A84828;
+  --ember-light: #C86040;
+  --gold: #B8922A;
+  --gold-pale: #E8D498;
+  --skeptic: #4A5568;
+  --skeptic-pale: #E8ECF0;
+  --margin: clamp(1.5rem, 5vw, 5rem);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Karla', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9998; opacity: 0.6;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 1.1rem var(--margin);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(250,247,242,0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,21,16,0.08);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--ink); text-decoration: none;
+}
+.nav-logo em { font-style: italic; color: var(--leaf); }
+.nav-status {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-pale); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--leaf); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 8rem var(--margin) 5rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(61,92,48,0.04) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(61,92,48,0.04) 60px);
+  pointer-events: none;
+}
+
+.hero-text { position: relative; z-index: 2; }
+
+.hero-dateline {
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  opacity: 0; animation: up 0.7s ease forwards 0.1s;
+}
+.hero-dateline::before { content: ''; display: block; width: 28px; height: 1px; background: var(--ember); }
+
+h1.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-weight: 300; line-height: 1.05;
+  color: var(--ink); margin-bottom: 2rem;
+  opacity: 0; animation: up 0.8s ease forwards 0.25s;
+}
+h1.hero-title strong { font-weight: 600; display: block; }
+h1.hero-title em { font-style: italic; color: var(--leaf); }
+
+.hero-lede {
+  font-family: 'Lora', serif;
+  font-size: 1.05rem; line-height: 1.85;
+  color: var(--ink-soft); max-width: 520px; margin-bottom: 2.5rem;
+  opacity: 0; animation: up 0.8s ease forwards 0.4s;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; align-items: center;
+  opacity: 0; animation: up 0.8s ease forwards 0.55s;
+}
+.btn {
+  padding: 0.8rem 1.75rem; border-radius: 1px;
+  font-family: 'Karla', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: all 0.2s; border: none; display: inline-block;
+}
+.btn-dark { background: var(--ink); color: var(--paper); }
+.btn-dark:hover { background: var(--leaf); }
+.btn-outline { background: transparent; border: 1px solid var(--ink-pale); color: var(--ink-soft); }
+.btn-outline:hover { border-color: var(--leaf); color: var(--leaf); }
+
+/* Scoreboard widget */
+.scoreboard {
+  background: var(--paper-warm);
+  border: 1px solid var(--paper-deep);
+  border-radius: 3px; padding: 1.75rem;
+  position: relative; z-index: 2;
+  opacity: 0; animation: fadeIn 1s ease forwards 0.7s;
+}
+.sb-label {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-pale); text-align: center; margin-bottom: 1.25rem;
+}
+.sb-scores {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem;
+  align-items: center; margin-bottom: 1.5rem;
+}
+.sb-side { text-align: center; }
+.sb-name {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-pale); margin-bottom: 0.5rem;
+}
+.sb-score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300; line-height: 1;
+}
+.sb-score.dreamer { color: var(--leaf); }
+.sb-score.skeptic { color: var(--skeptic); }
+.sb-vs {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--ink-pale); text-align: center;
+}
+.sb-divider { height: 1px; background: var(--paper-deep); margin-bottom: 1.25rem; }
+.sb-update {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 0.82rem; color: var(--ink-soft);
+  text-align: center; line-height: 1.5; margin-bottom: 1.25rem;
+}
+.sb-update strong { font-style: normal; color: var(--ink); }
+.sb-progress-label {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-pale); margin-bottom: 0.5rem;
+  display: flex; justify-content: space-between;
+}
+.sb-track {
+  height: 6px; background: var(--paper-deep);
+  border-radius: 3px; overflow: hidden;
+}
+.sb-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--skeptic) 0%, var(--gold) 60%, var(--leaf) 100%);
+  border-radius: 3px; width: 0;
+  transition: width 1.8s cubic-bezier(0.4,0,0.2,1);
+}
+.sb-note { font-size: 0.7rem; color: var(--ink-pale); text-align: center; margin-top: 0.6rem; font-style: italic; }
+
+/* PULLQUOTE */
+.pullquote {
+  background: var(--ink); padding: 4rem var(--margin);
+  display: flex; align-items: center; gap: 2rem;
+}
+.pq-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem; line-height: 0.6;
+  color: var(--leaf-mid); opacity: 0.35;
+  flex-shrink: 0; margin-top: 1.5rem;
+}
+.pullquote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 300; color: var(--paper-warm); line-height: 1.55;
+}
+.pullquote blockquote strong { font-weight: 600; font-style: normal; color: var(--gold-pale); }
+.pullquote blockquote em { color: var(--leaf-pale); }
+
+/* SECTION BASE */
+section { padding: 5.5rem var(--margin); }
+.label {
+  font-size: 0.67rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.label::after {
+  content: ''; display: block; flex: 1;
+  height: 1px; background: var(--paper-deep); max-width: 80px;
+}
+h2.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 300; color: var(--ink);
+  line-height: 1.15; margin-bottom: 1.5rem;
+}
+h2.section-title em { font-style: italic; color: var(--leaf); }
+h2.section-title strong { font-weight: 600; }
+
+/* THE CONVERSATION */
+.conversation { background: var(--paper-warm); }
+.conv-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.conv-body {
+  font-family: 'Lora', serif;
+  font-size: 1rem; line-height: 1.9; color: var(--ink-soft);
+}
+.conv-body p + p { margin-top: 1.25rem; }
+.conv-body strong { color: var(--ink); }
+
+.dialogue { display: flex; flex-direction: column; gap: 0; }
+.dialogue-msg {
+  padding: 1.25rem 1.5rem;
+  position: relative;
+}
+.dialogue-msg + .dialogue-msg {
+  border-top: 1px solid var(--paper-deep);
+}
+.dm-her { border-left: 3px solid var(--leaf); background: var(--leaf-wash); }
+.dm-him { border-left: 3px solid var(--skeptic); background: var(--skeptic-pale); }
+.dm-speaker {
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.dm-her .dm-speaker { color: var(--leaf); }
+.dm-him .dm-speaker { color: var(--skeptic); }
+.dm-text {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 0.9rem; line-height: 1.65; color: var(--ink-mid);
+}
+
+/* THE CASE */
+.the-case { background: var(--paper); }
+.case-intro {
+  font-family: 'Lora', serif; font-size: 1rem; line-height: 1.85;
+  color: var(--ink-soft); max-width: 600px; margin-bottom: 3rem;
+}
+.case-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--paper-deep);
+  border: 1px solid var(--paper-deep); margin-bottom: 1.5rem;
+}
+.case-card {
+  background: var(--paper); padding: 1.75rem; transition: background 0.2s;
+}
+.case-card:hover { background: var(--paper-warm); }
+.case-icon { font-size: 1.4rem; margin-bottom: 0.75rem; display: block; }
+.case-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.5rem;
+}
+.case-desc { font-size: 0.82rem; line-height: 1.65; color: var(--ink-soft); }
+.case-counter {
+  margin-top: 0.75rem; padding-top: 0.75rem;
+  border-top: 1px solid var(--paper-deep);
+  font-size: 0.78rem; color: var(--skeptic);
+  font-style: italic; line-height: 1.5;
+}
+.case-counter::before {
+  content: 'His counter: ';
+  font-style: normal; font-weight: 500;
+  font-size: 0.65rem; letter-spacing: 0.08em;
+  text-transform: uppercase; display: block;
+  margin-bottom: 0.25rem; color: var(--ink-pale);
+}
+
+/* CRITERIA */
+.criteria { background: var(--paper-warm); }
+.criteria-intro {
+  font-family: 'Lora', serif; font-size: 1rem; line-height: 1.85;
+  color: var(--ink-soft); max-width: 600px; margin-bottom: 2.5rem;
+}
+.criteria-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--paper-deep);
+  border: 1px solid var(--paper-deep); margin-bottom: 2.5rem;
+}
+.crit-card { background: var(--paper-warm); padding: 1.5rem; transition: background 0.2s; }
+.crit-card:hover { background: var(--paper); }
+.crit-icon { font-size: 1.3rem; margin-bottom: 0.6rem; display: block; }
+.crit-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.4rem;
+}
+.crit-desc { font-size: 0.8rem; line-height: 1.6; color: var(--ink-soft); }
+.crit-badge {
+  display: inline-block; margin-top: 0.6rem;
+  padding: 0.15rem 0.6rem; border-radius: 1px;
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.p-must { background: rgba(168,72,40,0.1); color: var(--ember); }
+.p-want { background: rgba(61,92,48,0.1); color: var(--leaf); }
+.p-nice { background: rgba(184,146,42,0.1); color: var(--gold); }
+
+.doc-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.doc-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.5rem; background: var(--paper);
+  border: 1px solid var(--paper-deep); border-radius: 2px;
+  text-decoration: none; color: var(--ink);
+  transition: all 0.2s; flex: 1; min-width: 240px;
+}
+.doc-link:hover { border-color: var(--leaf); background: var(--leaf-wash); }
+.doc-icon { font-size: 1.4rem; flex-shrink: 0; }
+.doc-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.15rem; }
+.doc-sub { font-size: 0.72rem; color: var(--ink-pale); }
+
+/* QUESTIONS */
+.questions { background: var(--ink); }
+.questions .label { color: var(--leaf-pale); }
+.questions .label::after { background: rgba(255,255,255,0.1); }
+.questions h2.section-title { color: var(--paper-warm); }
+.questions h2.section-title em { color: var(--gold-pale); }
+.q-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;
+}
+.q-card {
+  padding: 1.75rem; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 2px; background: rgba(255,255,255,0.03);
+  transition: background 0.2s, border-color 0.2s;
+}
+.q-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); }
+.q-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300;
+  color: rgba(255,255,255,0.09); line-height: 1; margin-bottom: 0.75rem;
+}
+.q-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.15rem;
+  color: var(--paper-warm); line-height: 1.45; margin-bottom: 0.6rem;
+}
+.q-whose {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.q-her { color: var(--leaf-pale); }
+.q-his { color: #9AADBE; }
+.q-both { color: var(--gold-pale); }
+.q-context { font-size: 0.8rem; color: rgba(250,247,242,0.38); line-height: 1.6; }
+
+/* DISPATCHES */
+.dispatches { background: var(--paper-warm); }
+.dispatch-inner {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start;
+}
+.post-list { display: flex; flex-direction: column; }
+.post-item {
+  display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem;
+  align-items: start; padding: 1.75rem 0;
+  border-bottom: 1px solid var(--paper-deep);
+  text-decoration: none; color: inherit; transition: all 0.15s;
+}
+.post-item:last-child { border-bottom: none; }
+.post-item:hover .post-title { color: var(--leaf); }
+.post-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem; font-weight: 600; color: var(--ink-pale);
+  line-height: 1.3; text-align: center; padding-top: 3px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.post-date span { display: block; font-size: 1.5rem; font-weight: 300; line-height: 1; }
+.post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.3rem;
+  line-height: 1.25; transition: color 0.2s;
+}
+.post-excerpt { font-size: 0.8rem; line-height: 1.65; color: var(--ink-soft); }
+.post-tag {
+  display: inline-block; margin-top: 0.4rem;
+  padding: 0.15rem 0.55rem; background: var(--paper-deep);
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-pale); border-radius: 1px;
+}
+.dispatch-featured { position: sticky; top: 6rem; }
+.feat-tag {
+  font-size: 0.67rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 0.75rem; display: block;
+}
+.feat-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem; font-weight: 600;
+  color: var(--ink); line-height: 1.15; margin-bottom: 0.75rem;
+}
+.feat-meta { font-size: 0.7rem; color: var(--ink-pale); margin-bottom: 1rem; }
+.feat-body {
+  font-family: 'Lora', serif; font-size: 0.9rem; line-height: 1.9;
+  color: var(--ink-soft); margin-bottom: 1.5rem;
+}
+.feat-read {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--leaf); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.2s;
+}
+.feat-read:hover { gap: 0.75rem; }
+
+/* FAMILY */
+.family { background: var(--paper); }
+.family-intro {
+  font-family: 'Lora', serif; font-size: 1rem; line-height: 1.85;
+  color: var(--ink-soft); max-width: 600px; margin-bottom: 3rem;
+}
+.family-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; background: var(--paper-deep); border: 1px solid var(--paper-deep);
+}
+.fam-card { background: var(--paper); padding: 1.5rem; transition: background 0.2s; }
+.fam-card:hover { background: var(--paper-warm); }
+.fam-glyph {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--paper-deep); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 1rem; margin-bottom: 0.9rem;
+}
+.fam-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem;
+}
+.fam-role {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-pale); margin-bottom: 0.45rem;
+}
+.fam-note { font-size: 0.79rem; line-height: 1.6; color: var(--ink-soft); font-style: italic; }
+.fam-status {
+  display: inline-block; margin-top: 0.65rem;
+  padding: 0.15rem 0.55rem; border-radius: 1px;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.s-in { background: rgba(61,92,48,0.12); color: var(--leaf); }
+.s-almost { background: rgba(184,146,42,0.12); color: var(--gold); }
+.s-maybe { background: rgba(74,85,104,0.1); color: var(--skeptic); }
+
+/* NEWSLETTER */
+.newsletter {
+  background: var(--leaf); padding: 5rem var(--margin);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.newsletter .label { color: var(--leaf-wash); }
+.newsletter .label::after { background: rgba(255,255,255,0.2); }
+h2.nl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  font-weight: 300; color: var(--paper); line-height: 1.2; margin-bottom: 0.75rem;
+}
+h2.nl-title strong { font-weight: 600; }
+.nl-body {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 0.93rem; color: rgba(250,247,242,0.7); line-height: 1.75;
+}
+.nl-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.nl-form input {
+  padding: 0.85rem 1.2rem;
+  background: rgba(250,247,242,0.1);
+  border: 1px solid rgba(250,247,242,0.25); border-radius: 1px;
+  font-family: 'Karla', sans-serif; font-size: 0.9rem; color: var(--paper);
+  outline: none; transition: border-color 0.2s;
+}
+.nl-form input::placeholder { color: rgba(250,247,242,0.4); }
+.nl-form input:focus { border-color: rgba(250,247,242,0.6); }
+.nl-submit {
+  padding: 0.9rem; background: var(--paper); color: var(--leaf);
+  border: none; font-family: 'Karla', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; border-radius: 1px; transition: background 0.2s, color 0.2s;
+}
+.nl-submit:hover { background: var(--gold-pale); color: var(--ink); }
+.nl-submit:disabled { opacity: 0.7; cursor: default; }
+.nl-note { font-size: 0.68rem; color: rgba(250,247,242,0.32); }
+.nl-success {
+  display: none; background: rgba(250,247,242,0.1);
+  border: 1px solid rgba(250,247,242,0.25); border-radius: 1px;
+  padding: 1.5rem; text-align: center;
+}
+.nl-success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-style: italic;
+  color: var(--paper); margin-bottom: 0.5rem;
+}
+.nl-success-note { font-size: 0.8rem; color: rgba(250,247,242,0.6); }
+
+/* FOOTER */
+footer {
+  padding: 2.5rem var(--margin); background: var(--ink);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--paper-warm);
+}
+.footer-logo em { font-style: italic; color: var(--leaf-pale); }
+.footer-tagline { font-size: 0.72rem; font-style: italic; color: rgba(250,247,242,0.3); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a {
+  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(250,247,242,0.3); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--leaf-pale); }
+
+/* TENNESSEE */
+.tn-research { background: var(--paper); padding: 5.5rem var(--margin); }
+.tn-intro { font-family: 'Lora', serif; font-size: 1rem; line-height: 1.85; color: var(--ink-soft); max-width: 640px; margin-bottom: 3rem; }
+.tn-map { background: var(--paper-warm); border: 1px solid var(--paper-deep); border-radius: 3px; padding: 2rem; margin-bottom: 2.5rem; }
+.tn-map-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.tn-map-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); }
+.tn-map-note { font-size: 0.75rem; color: var(--ink-pale); font-style: italic; }
+.tn-zones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--paper-deep); border: 1px solid var(--paper-deep); }
+.tn-zone { background: var(--paper); padding: 1.25rem; transition: background 0.2s; }
+.tn-zone:hover { background: var(--paper-warm); }
+.tz-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.tz-desc { font-size: 0.8rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0.75rem; }
+.tz-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.tz-tag { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 1px; }
+.tz-tag.good { background: rgba(61,92,48,0.1); color: var(--leaf); }
+.tz-tag.warn { background: rgba(184,146,42,0.1); color: var(--gold); }
+.tn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--paper-deep); border: 1px solid var(--paper-deep); margin-bottom: 1.5rem; }
+.tn-card { background: var(--paper); padding: 1.5rem; transition: background 0.2s; }
+.tn-card:hover { background: var(--paper-warm); }
+.tn-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; display: block; }
+.tn-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.tn-card-body { font-size: 0.78rem; line-height: 1.65; color: var(--ink-soft); margin-bottom: 0.75rem; }
+.tn-card-body strong { color: var(--ink); }
+.tn-card-verdict { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 1px; display: inline-block; }
+.good-v { background: rgba(61,92,48,0.1); color: var(--leaf); }
+.warn-v { background: rgba(184,146,42,0.1); color: var(--gold); }
+.tn-flag { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; background: rgba(168,72,40,0.06); border: 1px solid rgba(168,72,40,0.2); border-radius: 2px; }
+.tn-flag-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+.tn-flag-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--ember); margin-bottom: 0.4rem; }
+.tn-flag-body { font-size: 0.82rem; line-height: 1.65; color: var(--ink-soft); }
+
+/* ANIMATIONS */
+@keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links, .nav-status { display: none; }
+  .hero { grid-template-columns: 1fr; padding-top: 6rem; }
+  .scoreboard { display: none; }
+  .conv-grid, .dispatch-inner, .newsletter { grid-template-columns: 1fr; gap: 2.5rem; }
+  .case-grid, .criteria-grid { grid-template-columns: 1fr; }
+  .q-grid { grid-template-columns: 1fr; }
+  .tn-zones { grid-template-columns: 1fr; }
+  .tn-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 560px) {
+  .tn-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Roots <em>&amp; Rewild</em></a>
+  <div class="nav-status">
+    <span class="status-dot"></span>
+    Husband: 1% convinced. Working on it.
+  </div>
+  <ul class="nav-links">
+    <li><a href="#conversation">The Story</a></li>
+    <li><a href="#thecase">The Case</a></li>
+    <li><a href="#criteria">Land Criteria</a></li>
+    <li><a href="#dispatches">Dispatches</a></li>
+    <li><a href="#newsletter">Follow Along</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-dateline">Florida &rarr; Maybe Tennessee &middot; In Progress</div>
+    <h1 class="hero-title">
+      What if we just<br>
+      <strong>stopped<br>participating?</strong>
+      <em>We're finding out.</em>
+    </h1>
+    <p class="hero-lede">PFAS in the water. Toxins in the food. An HOA that chooses what color your house can be. A mortgage funding someone else's empire. We're a family in the Florida suburbs asking a serious question: is opting out actually possible — and what would it cost? This blog is the investigation. We don't have answers yet. My husband isn't convinced. I might be stopped by hard facts. Come with us anyway.</p>
+    <div class="hero-actions">
+      <a href="#conversation" class="btn btn-dark">Read the story</a>
+      <a href="#newsletter" class="btn btn-outline">Follow along</a>
+    </div>
+  </div>
+
+  <!-- Scoreboard -->
+  <div class="scoreboard reveal">
+    <div class="sb-label">Current standings</div>
+    <div class="sb-scores">
+      <div class="sb-side">
+        <div class="sb-name">Her</div>
+        <div class="sb-score dreamer" id="herScore">0</div>
+      </div>
+      <div class="sb-vs">vs</div>
+      <div class="sb-side">
+        <div class="sb-name">Him</div>
+        <div class="sb-score skeptic" id="himScore">0</div>
+      </div>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-update">
+      Latest update: <strong>"He hasn't said no."</strong> We're choosing to count that.
+    </div>
+    <div class="sb-progress-label">
+      <span>Not a chance</span>
+      <span>Let's do it</span>
+    </div>
+    <div class="sb-track"><div class="sb-fill" id="sbFill"></div></div>
+    <div class="sb-note">Him, on a scale of 0 to yes</div>
+  </div>
+</section>
+
+<!-- PULLQUOTE -->
+<div class="pullquote">
+  <div class="pq-mark">"</div>
+  <blockquote>"I'm not sure I want a farm. I'm sure I want to stop <em>funding billionaires, eating forever chemicals, and living inside constraints I never agreed to.</em> The farm might be the answer. <strong>I'm here to find out if it actually is.</strong>"</blockquote>
+</div>
+
+<!-- THE CONVERSATION -->
+<section class="conversation" id="conversation">
+  <div class="conv-grid">
+    <div>
+      <div class="label reveal">The Real Why</div>
+      <h2 class="section-title reveal">This isn't about<br>a farm. It's about <em>opting out.</em></h2>
+      <div class="conv-body reveal">
+        <p>I'm a content designer at Meta. My husband is a project manager at AT&T. We have two daughters in advanced classes at great schools who are competitive gymnasts training for state-level competition. On paper, we have exactly the life you're supposed to want.</p>
+        <p>PFAS chemicals in the municipal water. Pesticides on the lawn next door drifting into our garden. Processed food engineered for shelf life, not health. An HOA with opinions about our mailbox. A mortgage that, when you follow the money, funds someone you've never met and never would choose to.</p>
+        <p>I have Rheumatoid Arthritis and Hashimoto's. My body is already fighting itself. I've started to wonder how much of what surrounds us is making that harder — and whether I have any real power to change it from inside a suburb.</p>
+        <p><strong>The suburbs feel like a managed life.</strong> Schedules set by schools, employers, and competition calendars. Constraints set by municipalities and HOAs. Food chosen by whoever runs the supply chain this week. It's comfortable. It's also not freedom.</p>
+        <p>The farm isn't the dream. <strong>The freedom is the dream.</strong> The farm might be one way to get there. I'm doing the actual investigation — what it would take, what it would cost, and what we'd be giving up. Because what we'd be giving up is real and specific and has a leotard and a competition schedule.</p>
+        <p>I could be stopped by hard facts. My husband probably hopes I will be. This blog is what happens either way.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="dialogue">
+        <div class="dialogue-msg dm-her">
+          <div class="dm-speaker">Her, 10pm on a Tuesday</div>
+          <div class="dm-text">"I think we should buy land and move somewhere rural and raise cows and grow our own food and build a family compound."</div>
+        </div>
+        <div class="dialogue-msg dm-him">
+          <div class="dm-speaker">Him, reasonably</div>
+          <div class="dm-text">"Okay. How much would that cost?"</div>
+        </div>
+        <div class="dialogue-msg dm-her">
+          <div class="dm-speaker">Her</div>
+          <div class="dm-text">"I have a spreadsheet."</div>
+        </div>
+        <div class="dialogue-msg dm-him">
+          <div class="dm-speaker">Him</div>
+          <div class="dm-text">"...Of course you do. What does it say?"</div>
+        </div>
+        <div class="dialogue-msg dm-her">
+          <div class="dm-speaker">Her</div>
+          <div class="dm-text">"It says we need to talk more. But also that this is possible."</div>
+        </div>
+        <div class="dialogue-msg dm-him">
+          <div class="dm-speaker">Him, two months later</div>
+          <div class="dm-text">"Send me the land criteria document. I want to look at it."</div>
+        </div>
+        <div class="dialogue-msg dm-her">
+          <div class="dm-speaker">Her, internally</div>
+          <div class="dm-text">"!!!!!!"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CASE I'M MAKING -->
+<section class="the-case" id="thecase">
+  <div class="label reveal">The Investigation</div>
+  <h2 class="section-title reveal">What I'm actually<br><em>trying to escape.</em></h2>
+  <p class="case-intro reveal">This is the real list. Not "I want chickens." The systems, chemicals, and constraints I'm trying to understand — and whether leaving actually changes them, or just moves the problem somewhere quieter.</p>
+  <div class="case-grid reveal">
+    <div class="case-card">
+      <span class="case-icon">🧪</span>
+      <div class="case-title">Forever Chemicals</div>
+      <p class="case-desc">PFAS in municipal water supplies, pesticides in conventional produce, microplastics in packaging. With autoimmune disease, chemical load isn't abstract — it's a real variable I want control over.</p>
+      <div class="case-counter">Does rural well water actually test cleaner? Agricultural runoff is real. This needs actual investigation, not assumption.</div>
+    </div>
+    <div class="case-card">
+      <span class="case-icon">🏦</span>
+      <div class="case-title">Who Our Money Funds</div>
+      <p class="case-desc">Every grocery run, utility bill, mortgage payment, and Amazon order flows somewhere. Most of it flows upward. Growing food, generating energy, and owning land outright changes who benefits from our existence.</p>
+      <div class="case-counter">Land has a mortgage too. Property taxes. Insurance. The supply chain doesn't disappear — it just gets longer and more rural.</div>
+    </div>
+    <div class="case-card">
+      <span class="case-icon">📋</span>
+      <div class="case-title">The Constraint Layer</div>
+      <p class="case-desc">HOA rules. Municipal zoning. Work schedules. School calendars. Social obligations. The suburbs are a managed life — and most of the managing wasn't chosen. I want to audit every constraint and decide which ones I actually accept.</p>
+      <div class="case-counter">Rural land has its own constraints — agricultural regulations, weather, animal welfare laws. And animals make their own schedule.</div>
+    </div>
+    <div class="case-card">
+      <span class="case-icon">🥩</span>
+      <div class="case-title">The Food Supply</div>
+      <p class="case-desc">Knowing what's in our food means growing or sourcing it ourselves. Not as a hobby — as a genuine reduction in dependence on a supply chain optimized for shelf life, not health.</p>
+      <div class="case-counter">Growing enough food for a family is a full-time job. What's the realistic percentage we could actually produce ourselves, year one?</div>
+    </div>
+    <div class="case-card">
+      <span class="case-icon">⚡</span>
+      <div class="case-title">Energy Independence</div>
+      <p class="case-desc">Grid dependence is a vulnerability — political, financial, and practical. Solar, battery storage, and water collection aren't ideological positions. They're insurance and autonomy.</p>
+      <div class="case-counter">Up-front cost is real. And "off-grid" with medical equipment, two kids, and a chronic illness is a different calculation than a cabin in the woods.</div>
+    </div>
+    <div class="case-card">
+      <span class="case-icon">🧭</span>
+      <div class="case-title">The Freedom Question</div>
+      <p class="case-desc">Is complete freedom achievable? Probably not. Is significantly more freedom — over food, land, time, money flow, chemical exposure — achievable? That's the real question this whole investigation is trying to answer.</p>
+      <div class="case-counter">Freedom on land still has limits. Weather. Bodies. Markets. Maybe the goal isn't escape — maybe it's choosing your own constraints instead of inheriting everyone else's.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAND CRITERIA -->
+<section class="criteria" id="criteria">
+  <div class="label reveal">The Research (Before Any Land)</div>
+  <h2 class="section-title reveal">We made a scorecard.<br><em>We have no land.</em></h2>
+  <p class="criteria-intro reveal">Classic content designer move: before we've agreed to do anything, I've already built the framework for evaluating it. Here's what we've decided matters if we ever actually do this &mdash; and the documents I made him read.</p>
+  <div class="criteria-grid reveal">
+    <div class="crit-card">
+      <span class="crit-icon">💧</span>
+      <div class="crit-title">Water Rights &amp; Well</div>
+      <p class="crit-desc">Reliable well or strong water rights. Non-negotiable for livestock and off-grid systems. Drought history matters here.</p>
+      <span class="crit-badge p-must">Must Have</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🌳</span>
+      <div class="crit-title">Acreage &amp; Pasture</div>
+      <p class="crit-desc">Enough land for grazing, a real kitchen garden, multiple structures, and breathing room between them.</p>
+      <span class="crit-badge p-must">Must Have</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🏗️</span>
+      <div class="crit-title">Zoning for ADUs &amp; Animals</div>
+      <p class="crit-desc">Agricultural zoning that permits multiple dwellings, short-term rentals, and farm animals without costly fights.</p>
+      <span class="crit-badge p-must">Must Have</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🏥</span>
+      <div class="crit-title">Medical Access</div>
+      <p class="crit-desc">RA and Hashimoto's mean specialist access isn't optional. Within reasonable range of a rheumatologist and endocrinologist.</p>
+      <span class="crit-badge p-must">Must Have</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">📶</span>
+      <div class="crit-title">Real Internet</div>
+      <p class="crit-desc">Remote work is part of the financial bridge. Starlink-viable or fiber nearby. Non-negotiable for the transition period.</p>
+      <span class="crit-badge p-want">Strong Want</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🌊</span>
+      <div class="crit-title">Flood &amp; Fire Risk</div>
+      <p class="crit-desc">Flood zone maps, wildfire history, soil stability. We want to build something lasting, not fight nature every season.</p>
+      <span class="crit-badge p-must">Must Have</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🌞</span>
+      <div class="crit-title">Solar Potential</div>
+      <p class="crit-desc">Southern exposure, room for a ground mount. Enough sun to run real systems and offset grid dependence meaningfully.</p>
+      <span class="crit-badge p-want">Strong Want</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🛣️</span>
+      <div class="crit-title">Year-Round Road Access</div>
+      <p class="crit-desc">For guests, deliveries, emergencies, and joints that don't love mud roads in February. Gravel is fine. Seasonal is not.</p>
+      <span class="crit-badge p-want">Strong Want</span>
+    </div>
+    <div class="crit-card">
+      <span class="crit-icon">🏘️</span>
+      <div class="crit-title">Small Town Nearby</div>
+      <p class="crit-desc">Not suburbs. Not total isolation. A real town with a hardware store, a diner, and people who say hello.</p>
+      <span class="crit-badge p-nice">Nice to Have</span>
+    </div>
+  </div>
+  <div class="doc-links reveal">
+    <a class="doc-link" href="https://docs.google.com/document/d/1-N9TpCGz1mlbt1a0r2HzWhXjr1kUiHgGAsVnYZ4_EVo/edit?tab=t.bi9nt1w7ze7f#heading=h.tbpyzo73r4xc" target="_blank" rel="noopener">
+      <span class="doc-icon">📄</span>
+      <div>
+        <div class="doc-title">Land Requirements Document</div>
+        <div class="doc-sub">Full criteria with rationale &mdash; the one I made him read</div>
+      </div>
+    </a>
+    <a class="doc-link" href="https://docs.google.com/spreadsheets/d/18oIBLuEOoZsfxWFlan3AP9VaIo9rtvaa-p7imN1gWUI/edit?usp=sharing" target="_blank" rel="noopener">
+      <span class="doc-icon">📊</span>
+      <div>
+        <div class="doc-title">Land Weighted Scorecard</div>
+        <div class="doc-sub">How we'll evaluate properties &mdash; if we ever get there</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="questions" id="questions">
+  <div class="label reveal">Still Unanswered</div>
+  <h2 class="section-title reveal">The questions<br>we're sitting with <em>right now</em></h2>
+  <div class="q-grid">
+    <div class="q-card reveal">
+      <div class="q-num">01</div>
+      <div class="q-whose q-her">Hers</div>
+      <div class="q-text">"Does rural land actually reduce chemical exposure, or does it just change which chemicals?"</div>
+      <div class="q-context">Agricultural runoff, well water contamination, wood smoke — I need real data, not a romantic assumption. This is a research project.</div>
+    </div>
+    <div class="q-card reveal">
+      <div class="q-num">02</div>
+      <div class="q-whose q-his">His</div>
+      <div class="q-text">"What's the actual financial runway, and what breaks first if things go slower than planned?"</div>
+      <div class="q-context">The spreadsheet exists. Not all the numbers are comfortable. This is the honest center of his hesitation.</div>
+    </div>
+    <div class="q-card reveal">
+      <div class="q-num">03</div>
+      <div class="q-whose q-her">Hers</div>
+      <div class="q-text">"Is 'complete freedom' actually the goal, or is it 'freedom I chose' — which is a different thing?"</div>
+      <div class="q-context">Land has demands. Animals don't negotiate. Weather doesn't care about my joints. The question is whether those constraints feel different because I picked them.</div>
+    </div>
+    <div class="q-card reveal">
+      <div class="q-num">04</div>
+      <div class="q-whose q-his">His</div>
+      <div class="q-text">"What happens on a bad RA day when there are animals that need care and we're two hours from a specialist?"</div>
+      <div class="q-context">This is his most legitimate question and I don't have a complete answer yet. Working on it.</div>
+    </div>
+    <div class="q-card reveal">
+      <div class="q-num">05</div>
+      <div class="q-whose q-both">Both</div>
+      <div class="q-text">"Our daughters are state-level competitive gymnasts. What does this plan do to that?"</div>
+      <div class="q-context">Great coaches, real competitive trajectories, advanced classes, teammates they've trained with for years. This isn't abstractly "uprooting the kids." It's asking two specific girls to give up something they've worked extremely hard for. Neither of us has fully answered this yet.</div>
+    </div>
+    <div class="q-card reveal">
+      <div class="q-num">06</div>
+      <div class="q-whose q-both">Both</div>
+      <div class="q-text">"Could hard facts stop this? Yes. Are we willing to find out what they are?"</div>
+      <div class="q-context">That's the whole blog. We're not committed to the answer. We're committed to the honest investigation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DISPATCHES -->
+<section class="dispatches" id="dispatches">
+  <div class="dispatch-inner">
+    <div>
+      <div class="label reveal">The Writing</div>
+      <h2 class="section-title reveal">Dispatches from<br>the <em>kitchen table</em></h2>
+      <div class="post-list">
+        <a href="#" class="post-item reveal">
+          <div class="post-date"><span>14</span>Mar</div>
+          <div>
+            <div class="post-title">I Tested Our Tap Water. I Shouldn't Have.</div>
+            <p class="post-excerpt">What PFAS levels actually look like in suburban municipal water, and why this is now the hardest number to unknow.</p>
+            <span class="post-tag">The Chemical Load</span>
+          </div>
+        </a>
+        <a href="#" class="post-item reveal">
+          <div class="post-date"><span>02</span>Mar</div>
+          <div>
+            <div class="post-title">Where Does Our Money Actually Go? I Followed It.</div>
+            <p class="post-excerpt">Mortgage, groceries, utilities, subscriptions — I traced a month of spending upstream. The results were not comforting.</p>
+            <span class="post-tag">The Money</span>
+          </div>
+        </a>
+        <a href="#" class="post-item reveal">
+          <div class="post-date"><span>18</span>Feb</div>
+          <div>
+            <div class="post-title">Every Rule We Live Under That We Never Agreed To</div>
+            <p class="post-excerpt">HOA bylaws, municipal codes, school schedules, corporate calendar. I listed every constraint on our daily life. It took a while.</p>
+            <span class="post-tag">The Constraint Audit</span>
+          </div>
+        </a>
+        <a href="#" class="post-item reveal">
+          <div class="post-date"><span>05</span>Feb</div>
+          <div>
+            <div class="post-title">I Have RA. I Want Out. Let's Talk About Whether That's Crazy.</div>
+            <p class="post-excerpt">Everyone says farming with autoimmune disease is the craziest part of the plan. I think the suburbs might actually be harder on my body.</p>
+            <span class="post-tag">Health</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="dispatch-featured reveal">
+      <span class="feat-tag">First Post &mdash; Start Here</span>
+      <div class="feat-meta">January 2025 &middot; 8 min read</div>
+      <div class="feat-title">I Design for Billions. I Can't Figure Out How to Design My Own Life.</div>
+      <div class="feat-body">
+        I'm a content designer at Meta. I help design the systems billions of people use every day. I'm also sitting in my suburb wondering if I can opt out of the one I'm living in.
+        <br><br>
+        My husband manages projects at AT&T. Our daughters are state-level competitive gymnasts in advanced classes at great schools. On paper, we have exactly the life the algorithm would serve you as an aspirational ad.
+        <br><br>
+        And I keep thinking about the water coming out of our tap. About who benefits every time I open a delivery box. About the fact that our entire daily schedule &mdash; mine, his, theirs &mdash; is set by institutions we didn't choose and can't meaningfully change. This blog is the investigation. I could be stopped by hard facts. I'm at 5%, my husband is at 1%. Come with us anyway.
+      </div>
+      <a href="entry-01-julia-grey.html" class="feat-read">Read the first post &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY / CAST -->
+<section class="family" id="family">
+  <div class="label reveal">The Cast</div>
+  <h2 class="section-title reveal">Who's in<br>this <em>conversation</em></h2>
+  <p class="family-intro reveal">The dream is multigenerational. The current reality is two people in a suburb having the same argument in different ways until something shifts. Here's everyone who has a stake in where this lands.</p>
+  <div class="family-grid">
+    <div class="fam-card reveal">
+      <div class="fam-glyph">👩‍💻</div>
+      <div class="fam-name">Me</div>
+      <div class="fam-role">Content Designer, Meta</div>
+      <div class="fam-note">RA + Hashimoto's. Thinking about opting out of a system I help design for a living. The irony is not lost on me.</div>
+      <span class="fam-status s-in">5% convinced. Getting there.</span>
+    </div>
+    <div class="fam-card reveal">
+      <div class="fam-glyph">🤔</div>
+      <div class="fam-name">My Husband</div>
+      <div class="fam-role">Project Manager, AT&T</div>
+      <div class="fam-note">Methodical, measured, loves me, has a project manager's instinct to scope everything before committing. Currently at 1%.</div>
+      <span class="fam-status s-maybe">1% convinced. Working on it.</span>
+    </div>
+    <div class="fam-card reveal">
+      <div class="fam-glyph">🤸</div>
+      <div class="fam-name">Our Daughters</div>
+      <div class="fam-role">The Real Complication</div>
+      <div class="fam-note">Advanced classes. Great schools. State-level competitive gymnasts with training schedules, coaches, and teammates they love. This is the honest center of the hardest question.</div>
+      <span class="fam-status s-maybe">This one is complicated</span>
+    </div>
+    <div class="fam-card reveal">
+      <div class="fam-glyph">💍</div>
+      <div class="fam-name">Our Son + Fianc&eacute;e</div>
+      <div class="fam-role">Gen Two</div>
+      <div class="fam-note">Based in Michigan and completely in. No hesitation. When they said yes, this stopped being a fantasy and started being a question we had to actually answer — and suddenly Tennessee made geographic sense too.</div>
+      <span class="fam-status s-in">All the way in</span>
+    </div>
+    <div class="fam-card reveal">
+      <div class="fam-glyph">👴</div>
+      <div class="fam-name">My Father</div>
+      <div class="fam-role">Possibly Joining</div>
+      <div class="fam-note">The conversation is ongoing. Three generations on shared land is both the most beautiful version of this and the part with the most complexity to design for.</div>
+      <span class="fam-status s-maybe">Thinking about it</span>
+    </div>
+    <div class="fam-card reveal">
+      <div class="fam-glyph">🐄</div>
+      <div class="fam-name">The Cows</div>
+      <div class="fam-role">Awaiting Acquisition</div>
+      <div class="fam-note">Cuddle cows. The non-negotiable part of the whole plan. We don't have land yet. We already know what kind of cows we want. That tells you everything.</div>
+      <span class="fam-status s-maybe">No land yet</span>
+    </div>
+  </div>
+</section>
+
+<!-- TENNESSEE RESEARCH -->
+<section class="tn-research" id="tennessee">
+  <div class="label reveal">The Target State</div>
+  <h2 class="section-title reveal">Why Tennessee.<br><em>What we're finding out.</em></h2>
+  <p class="tn-intro reveal">No income tax. Closer to our son and his fianc&eacute;e in Michigan. Land prices that still make sense. Four seasons without brutal winters. And an agritourism market that actually exists. Here's the real research — including the parts that complicate the picture.</p>
+
+  <div class="tn-map reveal">
+    <div class="tn-map-header">
+      <span class="tn-map-label">Target zones</span>
+      <span class="tn-map-note">45&ndash;90 min from Chattanooga or Knoxville &mdash; close enough to specialist care, far enough for real land</span>
+    </div>
+    <div class="tn-zones">
+      <div class="tn-zone">
+        <div class="tz-name">Sequatchie Valley</div>
+        <div class="tz-desc">Long, narrow valley cut into the Cumberland Plateau. Stunning, agricultural, underpriced. Median ~$16k/acre. 45 min to Chattanooga. River runs through it.</div>
+        <div class="tz-tags"><span class="tz-tag good">Low land prices</span><span class="tz-tag good">Agricultural zoning</span><span class="tz-tag good">Scenic</span><span class="tz-tag warn">Moving fast</span></div>
+      </div>
+      <div class="tn-zone">
+        <div class="tz-name">Cumberland Plateau &mdash; Grundy &amp; Van Buren</div>
+        <div class="tz-desc">Rougher, more remote, seriously affordable. Some of the lowest land prices in the state. Real privacy. Require more infrastructure investment but the space is real.</div>
+        <div class="tz-tags"><span class="tz-tag good">Very affordable</span><span class="tz-tag good">Privacy</span><span class="tz-tag warn">Remote medical access</span><span class="tz-tag warn">Road quality varies</span></div>
+      </div>
+      <div class="tn-zone">
+        <div class="tz-name">Fentress &amp; Morgan County</div>
+        <div class="tz-desc">Upper plateau, bordering the Big South Fork. Timber, pasture, springs. Still affordable, still rural. Starlink viable. Worth a serious look for the compound model.</div>
+        <div class="tz-tags"><span class="tz-tag good">Affordable</span><span class="tz-tag good">Water access</span><span class="tz-tag good">Starlink viable</span><span class="tz-tag warn">Limited services</span></div>
+      </div>
+      <div class="tn-zone">
+        <div class="tz-name">McMinn &amp; Monroe County</div>
+        <div class="tz-desc">East TN foothills, between Chattanooga and Knoxville. More developed but still agricultural. Good balance of access and rural character. Agritourism market active here.</div>
+        <div class="tz-tags"><span class="tz-tag good">Medical access</span><span class="tz-tag good">Agritourism market</span><span class="tz-tag warn">Higher prices</span><span class="tz-tag warn">More competition</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tn-grid reveal">
+    <div class="tn-card">
+      <div class="tn-card-icon">💰</div>
+      <div class="tn-card-title">No State Income Tax</div>
+      <div class="tn-card-body">Tennessee has zero state income tax on wages. On a tech salary &mdash; even a remote partial one during transition &mdash; this is real money. It also matters when Airbnb income kicks in.</div>
+      <div class="tn-card-verdict good-v">Confirmed advantage</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🌾</div>
+      <div class="tn-card-title">Land Prices</div>
+      <div class="tn-card-body">Pastureland in target counties runs $5k&ndash;$16k/acre depending on location and access. Tennessee farmland appreciated 7.7% in 2025 &mdash; second highest in the nation. The window exists but it is closing.</div>
+      <div class="tn-card-verdict warn-v">Buy sooner not later</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🛖</div>
+      <div class="tn-card-title">Agritourism Law</div>
+      <div class="tn-card-body">Tennessee has explicit agritourism statute (TN Code 43-39) with liability protections for farm operators. The state Dept. of Agriculture actively supports and markets agritourism operations. Rural Airbnb outside city limits is largely unregulated.</div>
+      <div class="tn-card-verdict good-v">Favorable legal climate</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🧪</div>
+      <div class="tn-card-title">PFAS &amp; Water Quality</div>
+      <div class="tn-card-body">This is the complicated one. <strong>Northeast TN (Kingsport/Johnson City area): avoid.</strong> 60% of surface water tested positive for PFAS near Holston Army Ammunition Plant. Agricultural biosolids statewide are a real contamination pathway. Sequatchie Valley and Cumberland Plateau are significantly cleaner — but test every well.</div>
+      <div class="tn-card-verdict warn-v">Test every well. No exceptions.</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🏥</div>
+      <div class="tn-card-title">Medical Access (RA + Hashimoto's)</div>
+      <div class="tn-card-body">Rheumatology practices in both Chattanooga and Knoxville. From Sequatchie Valley: ~45 min to Chattanooga. From Cumberland Plateau: 60&ndash;90 min depending on location. Telehealth fills gaps but in-person flare management requires real planning. Workable, not perfect.</div>
+      <div class="tn-card-verdict warn-v">Workable. Plan for bad days.</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">📡</div>
+      <div class="tn-card-title">Internet &amp; Connectivity</div>
+      <div class="tn-card-body">Starlink is viable across the plateau and valley regions. Some fiber reaching rural areas. Remote work transition requires confirming coverage at the specific property before closing &mdash; not at the county level. This has caught people out.</div>
+      <div class="tn-card-verdict good-v">Starlink solves most of it</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🚗</div>
+      <div class="tn-card-title">Distance from Everyone</div>
+      <div class="tn-card-body">East Tennessee sits roughly 8&ndash;10 hours from Michigan, where our son and his fianc&eacute;e are. Driveable for the holidays, the spontaneous visits, and the multigenerational logistics of eventually having everyone on the same land. We're in Florida now — Tennessee gets us closer to them without trading the climate entirely. Not next door, but meaningfully closer.</div>
+      <div class="tn-card-verdict good-v">Closer than it sounds</div>
+    </div>
+    <div class="tn-card">
+      <div class="tn-card-icon">🌡️</div>
+      <div class="tn-card-title">Climate &amp; Growing Season</div>
+      <div class="tn-card-body">East TN gets four real seasons — a genuine upgrade from both brutal Florida summers and Michigan winters. Growing season is roughly 180&ndash;200 days. Summers are humid and hot &mdash; relevant for RA inflammation management. The plateau runs 5&ndash;10 degrees cooler than valley floor.</div>
+      <div class="tn-card-verdict good-v">Longer season. Manage the heat.</div>
+    </div>
+  </div>
+
+  <div class="tn-flag reveal">
+    <div class="tn-flag-icon">&#9888;</div>
+    <div>
+      <div class="tn-flag-title">The biosolids problem &mdash; read this before you look at land</div>
+      <div class="tn-flag-body">Tennessee permits Class B sewage sludge to be spread on farmland statewide as fertilizer. It contains PFAS. It contaminates adjacent private wells. Bristol's wastewater plant biosolids tested among the highest PFAS concentrations in the U.S. This isn't a reason to avoid Tennessee &mdash; it's a reason to ask, for any specific property, whether biosolids have been applied on or near it, and to test the well independently before closing. This is the research most people skip.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div>
+    <div class="label">Come Along</div>
+    <h2 class="nl-title">Letters from<br><strong>inside the machine</strong></h2>
+    <p class="nl-body">Real dispatches as we investigate whether opting out is actually possible — the chemical research, the financial math, the husband updates, the RA complications, and every hard fact that might stop us. We're not selling a dream. We're doing the work in public.</p>
+  </div>
+  <div class="beehiiv-wrapper">
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <iframe src="https://subscribe-forms.beehiiv.com/61e688b4-1bc7-45ff-9db8-0c70890ddd8e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 100%; height: 411px; margin: 0; border-radius: 0px !important; background-color: transparent; box-shadow: none; max-width: 100%;"></iframe>
+    <p class="nl-note" style="margin-top: 0.75rem;">No spam. Just letters. Unsubscribe whenever.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Roots <em>&amp; Rewild</em></div>
+    <div class="footer-tagline">An honest investigation into opting out.</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#conversation">The Story</a></li>
+    <li><a href="#thecase">The Arguments</a></li>
+    <li><a href="#criteria">Land Criteria</a></li>
+    <li><a href="#dispatches">Dispatches</a></li>
+    <li><a href="#tennessee">Tennessee</a></li>
+    <li><a href="#newsletter">Subscribe</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in');
+  }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Scoreboard animation — her at 5, him at 1
+  const sbObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          animateNum('herScore', 0, 5, 1200);
+          animateNum('himScore', 0, 1, 900);
+          document.getElementById('sbFill').style.width = '1%';
+        }, 400);
+        sbObs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const sb = document.querySelector('.scoreboard');
+  if (sb) sbObs.observe(sb);
+
+  function animateNum(id, from, to, duration) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * ease) + '%';
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+</script>
+</body>
+</html>

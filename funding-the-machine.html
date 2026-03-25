@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Want to Stop Funding the Machine. I Don't Know If I Can. — Roots & Rewild</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #f5f0e8;
+  color: #1a1814;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.masthead {
+  border-bottom: 1.5px solid rgba(26,24,20,0.15);
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: #faf7f2;
+}
+.blog-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a7060;
+  font-weight: 400;
+  text-decoration: none;
+}
+.issue-tag {
+  font-size: 12px;
+  color: #b5a990;
+  letter-spacing: 0.06em;
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+}
+
+.hero {
+  background: #faf7f2;
+  padding: 4rem 2rem 3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  border-bottom: 0.5px solid rgba(26,24,20,0.1);
+}
+.post-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b5a990;
+  margin-bottom: 1.2rem;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #1a1814;
+  margin-bottom: 1.5rem;
+}
+.byline-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 0.5px solid rgba(26,24,20,0.1);
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #c4b5a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.byline-name {
+  font-weight: 500;
+  color: #1a1814;
+  font-size: 13px;
+  display: block;
+}
+.byline-date {
+  color: #b5a990;
+  font-size: 12px;
+  display: block;
+}
+
+.article-body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  background: #faf7f2;
+}
+.article-body p {
+  margin-bottom: 1.6rem;
+  color: #1a1814;
+  font-weight: 300;
+  font-size: 17.5px;
+  line-height: 1.85;
+}
+.article-body p:first-child::first-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4.5em;
+  line-height: 0.75;
+  float: left;
+  margin: 0.05em 0.12em 0 0;
+  color: #1a1814;
+}
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid #c4b5a0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #6b5e50;
+  background: #f2ede3;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 2.5rem 0 1rem;
+  color: #1a1814;
+}
+.status-bar {
+  background: #f2ede3;
+  border: 0.5px solid rgba(26,24,20,0.12);
+  border-radius: 6px;
+  padding: 1.2rem 1rem;
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+.status-item { text-align: center; }
+.status-label {
+  color: #b5a990;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+  font-family: 'DM Mono', monospace;
+}
+.status-value {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  color: #1a1814;
+}
+.status-value.low { color: #a0522d; }
+.status-value.lower { color: #b04040; }
+.status-value.muted { color: #b5a990; font-style: italic; }
+
+em { font-style: italic; }
+
+.footer-nav {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-top: 0.5px solid rgba(26,24,20,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #b5a990;
+  background: #faf7f2;
+}
+.next-btn {
+  background: none;
+  border: 0.5px solid rgba(26,24,20,0.2);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: 'Source Serif 4', serif;
+  color: #6b5e50;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.next-btn:hover { background: #f2ede3; }
+
+@media (max-width: 500px) {
+  .hero, .article-body { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .status-bar { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <a class="blog-name" href="roots-and-rewild-updated.html">Roots &amp; Rewild / Field Notes</a>
+  <span class="issue-tag">Entry No. 001 &nbsp;·&nbsp; March 2026</span>
+</div>
+
+<div class="hero">
+  <p class="post-kicker">Introduction</p>
+  <h1>I Want to Stop Funding the Machine. I Don't Know If I Can.</h1>
+  <div class="byline-row">
+    <div class="avatar">JG</div>
+    <div>
+      <span class="byline-name">Julia Grey</span>
+      <span class="byline-date">Florida &nbsp;·&nbsp; 8 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <p>I live in a suburb. I drink municipal water. I buy groceries from a supply chain I cannot see, cannot audit, and have never meaningfully consented to. I pay an HOA. I work for a company whose profits mostly flow upward to people I will never meet. My hands are clean in the way that suburban hands are always clean — which is to say, not at all.</p>
+
+  <p>I also have Rheumatoid Arthritis. I've had it long enough to know that the medical establishment's answer is pharmaceutical, and that I believe them — partly. But lately I've been pulling a thread I can't stop pulling: <em>how much of my environment is making this worse?</em> The water. The air. The processed food I eat because I am tired and the good stuff is expensive and my afternoons are already gone. The low-grade stress of an HOA letter in the mailbox. The commute. The fluorescent lights. The sense that nothing I do is quite my own.</p>
+
+  <p>That would be enough to start a blog. But it's not all of it.</p>
+
+  <div class="pull-quote">
+    "We are preparing our children, diligently and expensively, for a world that may not exist by the time they arrive in it."
+  </div>
+
+  <p>I have two kids. They are 10 and 12. They go to school in a system designed to produce reliable workers for an industrial economy, then retrofitted — imperfectly — for a knowledge economy. And now, before that retrofit is even finished, the knowledge economy is being automated. I watch them do homework and I think: we are preparing them, diligently and expensively, for a world that may not exist by the time they arrive in it.</p>
+
+  <p>I am scared about this. I am also skeptical of my own fear — panic about AI has a long and frequently embarrassing history, and I don't want to be the person who yanked her kids out of school because of a vibe. But I am also, underneath the skepticism, doing quiet math. My 12-year-old will be entering the job market in roughly a decade. My 10-year-old, twelve years. A decade ago, nobody had heard of ChatGPT. The pace of change is not a vibe. It is a documented fact. And the question of what to teach children — what skills matter, what knowledge holds its value, what kind of person is resilient to disruption — is one the school system is not asking, at least not at any speed that helps us.</p>
+
+  <p>So the question that started as <em>how do I stop funding a machine that's making me sick</em> has grown a second question underneath it: <em>what kind of life are we actually building toward, and does this suburb lead there?</em></p>
+
+  <h2>What this blog is</h2>
+
+  <p>This is a real investigation. Not a homesteading fantasy. Not a manifesto. I want to know what opting out would actually cost — in dollars, in effort, in marriage — and whether rural land and a slower life genuinely deliver more freedom, or just trade the HOA for a septic system and the school district for a homeschool curriculum I haven't written yet.</p>
+
+  <p>I want to know what the research actually says about environmental triggers for autoimmune disease — the peer-reviewed version, with all the caveats intact. I want to know whether my anxiety about my kids' future is proportionate or catastrophizing. I want to run the numbers on land, solar, food costs, healthcare access outside a city, internet. I am not a romantic.</p>
+
+  <p>I could be stopped by hard facts. That's part of the deal.</p>
+
+  <h2>Where we're starting from</h2>
+
+  <p>My husband is at 1%. I am at 5%. We have consulted the children. They are at 0% — which is the most honest number in this whole enterprise and probably the most predictable. They are 10 and 12. Their friends are here. Their lives are here. Nobody asked them if they wanted a mother who reads about soil mineral content at 11pm. Between the four of us we are generating a combined 6% of momentum toward a fundamentally different life.</p>
+
+  <p>We own a house in a Tampa suburb. We have two salaries, a mortgage, a car payment, and a health insurance plan that costs more than I care to say. We are, by most measures, fine. Fine is the thing I'm interrogating.</p>
+
+  <div class="status-bar">
+    <div class="status-item">
+      <span class="status-label">My conviction</span>
+      <span class="status-value low">5%</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Husband buy-in</span>
+      <span class="status-value lower">1%</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Kids buy-in</span>
+      <span class="status-value muted">0%</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Hard answers</span>
+      <span class="status-value muted">0 so far</span>
+    </div>
+  </div>
+
+  <p>I'll write about what I find. Some entries will be data. Some will be arguments my husband and I have had. Some will be about the kids — what they're learning, what they're not, what I think they'll actually need. Some will probably be about pain, because that's part of this too. The body that motivated the question in the first place.</p>
+
+  <p>Come with us while we find out.</p>
+
+</div>
+
+<div class="footer-nav">
+  <span>Entry 1 of &#8734;</span>
+  <a class="next-btn" href="#">Next entry &#8599;</a>
+</div>
+
+</body>
+</html>
